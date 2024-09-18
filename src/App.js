@@ -43,7 +43,7 @@ function App() {
     async function fetchData() {
       const response = await axios.get('https://api.quicksell.co/v1/internal/frontend-assignment');
        if(response !== undefined){
-        const userData = response.data.users.map((user)=>user.name);
+        const userData = response.data.users.map((user)=>user);
        setUsers(userData)
        }
       await refactorData(response);
@@ -109,11 +109,12 @@ function App() {
         <>
           {users.map((listItem) => (
             <List
-              key={listItem}
+              key={listItem.name}
               groupValue="user"
               orderValue={ordering}
-              listTitle={listItem}
+              listTitle={listItem.name}
               userList={users}
+              userAvailable = {listItem.available}
               ticketDetails={ticketDetails}
             />
           ))}

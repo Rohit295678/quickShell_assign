@@ -11,7 +11,7 @@ const randomColor = colorArray[randomIndex];
       <div className="card-container">
         <div className="card-id-wrapper">
           <div className="card-id">{props.cardDetails.id}</div>
-          <div className={`card-profile`}
+          {props.groupValue!=='user' &&<div className={`card-profile`}
           style={{ backgroundColor: randomColor }}>
             <div className="card-profile-initial">
               {props.cardDetails.userObj.name[0]}
@@ -25,7 +25,7 @@ const randomColor = colorArray[randomIndex];
               }
             >
                 </div> 
-          </div>
+          </div>}
         </div>
         <div className="card-title">
         {(() => {

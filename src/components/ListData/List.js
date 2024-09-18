@@ -3,7 +3,9 @@ import './list.css';
 import Card from '../card/Card';
 
 export default function List(props) {
-  // Filter tickets based on group value and listTitle
+    const colorArray = ['red','blue','purple','green','pink','brown','orange']
+  const randomIndex = Math.floor(Math.random() * colorArray.length);
+const randomColor = colorArray[randomIndex];
   const filteredTickets = props.ticketDetails.filter(ticket => {
     if (props.groupValue === 'status' && ticket.status === props.listTitle) {
       return true;
@@ -16,9 +18,10 @@ export default function List(props) {
     }
     return false;
   });
-
-  // The number of filtered tickets
   const cardCount = filteredTickets.length;
+
+  
+  
 
   return (
     <>
@@ -109,7 +112,21 @@ export default function List(props) {
                 } else if (props.groupValue === 'status') {
                   return <>{props.listTitle}</>;
                 } else if (props.groupValue === 'user') {
-                  return <>{props.listTitle}</>;
+                  return <><div className="disp_Name"><div className={`card-profile`}
+                  style={{ backgroundColor: randomColor }}>
+                    <div className="card-profile-initial">
+                      {props.listTitle[0]}
+                      {props.listTitle[1]}
+                    </div>
+                    <div
+                      className={
+                        props.userAvailable
+                          ? "card-profile-initial-available card-profile-initial-available-true"
+                          : "card-profile-initial-available"
+                      }
+                    >
+                        </div> 
+                  </div><p>{props.listTitle}</p></div></>;
                 }
                 return null;
               })()}
@@ -118,7 +135,7 @@ export default function List(props) {
             {/* Card count */}
             <div className="list-sum">{cardCount}</div>
           </div>
-
+            
           <div className="list-header-right">
             <div className="list-add-item">
               <img src="/add.svg" alt="add_img" />
@@ -127,6 +144,7 @@ export default function List(props) {
               <img src="/3 dot menu.svg" alt="menu_img" />
             </div>
           </div>
+          
         </div>
 
         <div className="list-card-items">
@@ -134,6 +152,7 @@ export default function List(props) {
             <Card key={ticket.id} cardDetails={ticket} groupValue={props.groupValue} />
           ))}
         </div>
+        
       </div>
     </>
   );
