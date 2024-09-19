@@ -20,14 +20,11 @@ const randomColor = colorArray[randomIndex];
   });
   const cardCount = filteredTickets.length;
 
-  
-  
-
   return (
     <>
-      <div className="list-container">
-        <div className="list-header">
-          <div className="list-header-left">
+      <div className="listBox">
+        <div className="listItem">
+          <div className="listItem1">
             {(() => {
               if (props.groupValue === 'status') {
                 if (props.listTitle === 'Backlog') {
@@ -136,7 +133,7 @@ const randomColor = colorArray[randomIndex];
             <div className="list-sum">{cardCount}</div>
           </div>
             
-          <div className="list-header-right">
+          <div className="listItem2">
             <div className="list-add-item">
               <img src="/add.svg" alt="add_img" />
             </div>
