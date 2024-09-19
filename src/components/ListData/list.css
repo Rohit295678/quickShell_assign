@@ -1,4 +1,5 @@
  .listBox{
+    /* width: fit-content; */
     width: 360px;
     margin-left: 2.5rem;
 }
